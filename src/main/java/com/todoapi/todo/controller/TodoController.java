@@ -1,9 +1,11 @@
 package com.todoapi.todo.controller;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,4 +39,10 @@ public class TodoController {
     Todo updateTodo(@PathVariable UUID id, @RequestBody Todo isDone) {
         return todoService.updateTodo(id, isDone);
     }
+
+    @DeleteMapping("/todos/{id}")
+    Optional<Todo> removeTodo(@PathVariable UUID id){
+        return todoService.removeTodo(id); // don't return Optional
+    }
+
 }
