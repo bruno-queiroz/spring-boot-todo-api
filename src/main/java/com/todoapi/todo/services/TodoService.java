@@ -36,5 +36,17 @@ public class TodoService {
             return null;
         }
     }
+
+    public Optional<Todo> removeTodo(UUID id){
+        Optional<Todo> findTodo = todoRepository.findById(id);
+
+        if(findTodo.isPresent()){
+            todoRepository.deleteById(id);
+
+            return Optional.of(findTodo.get());
+        } else{
+            return Optional.empty();
+        }
+    }
 }
 
