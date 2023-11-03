@@ -2,6 +2,8 @@ package com.todoapi.todo.model;
 
 import java.util.UUID;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,8 +24,9 @@ public class Todo {
     private String task;
 
     @Temporal(TemporalType.TIMESTAMP)
+    @CreationTimestamp
     @Column(updatable = false)
-    private java.util.Date createAt;
+    private java.util.Date createdAt;
 
     private Boolean isDone = false;
 }
